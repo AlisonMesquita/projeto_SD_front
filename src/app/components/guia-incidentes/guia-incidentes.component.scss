@@ -1,0 +1,30 @@
+//@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
+section {
+    margin: 0 auto;
+    background-color: #E0E0E2;
+    height: 573px;
+    
+    .content {
+        width: 1200px;
+        margin: 0px auto;
+        background-color: #fff;
+
+        .edit-icon {
+            cursor: pointer;
+        }
+
+        .title {
+            font-size: 20px;
+            color: #087CA7;
+            padding: 20px 0px 10px 0px;
+            text-align: center;
+        }
+
+        table {
+            margin: 0 auto;
+            width: 100%;
+            height: 500px;
+        }
+    }
+}
