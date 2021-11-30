@@ -1,1 +1,39 @@
-<p>guia-noticias works!</p>
+<section> 
+    <div class="content">
+        <div fxLayout="row">
+            <button>Editar</button>
+            <p>Placeholder Message</p>
+        </div>
+        
+        <div>
+            <div class="item mat-dialog-container ng-tns-c138-4 ng-trigger ng-trigger-dialogContainer ng-star-inserted" *ngFor="let noticia of noticias" fxLayout="row">
+                <div>
+                    <div class="options" fxLayout="row" fxLayoutAlign="center center">
+                        <button>Excluir</button>
+                        <button>Editar</button>
+                    </div>
+                    <div class="box"></div>
+                </div>
+                
+                <div class="text" fxLayout="column">
+                    <div>
+                        <p class="title">{{noticia.titulo}}</p>
+                    </div>
+                    <div class="sub-text" fxLayout="column" fxLayoutAlign="center start">
+                        <div fxLayout="row" fxLayoutAlign="center center">
+                            <p class="info">{{noticia.id}}</p>
+                            <p class="info">{{noticia.descricao}}</p>
+                            <p class="info">{{noticia.dataCriacao}}</p>
+                        </div>
+                        
+                        <div fxLayout="row">
+                            <p class="info">{{noticia.usuario}}</p>
+                            <p class="info">{{noticia.categoria}}</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

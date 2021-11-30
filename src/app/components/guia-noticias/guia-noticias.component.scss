@@ -1,0 +1,38 @@
+section {
+    margin: 0 auto;
+    height: 573px;
+    background-color: #E0E0E2;
+
+    .content {
+        margin: 0 auto;
+        width: 1200px;
+        background-color: white;
+        padding: 20px;
+
+        .options {
+            padding-bottom: 15px;
+        }
+
+        .box {
+            width: 120px;
+            height: 120px;
+            background-color: slategrey;
+            margin-bottom: 20px;
+        }
+        .item {
+            margin: 20px 0px;
+            border-radius: 4px;
+        }
+
+        .text {
+            margin: 0 auto;
+            width: 80%;
+            text-align: center;
+            padding: 0px 10px;
+        }
+
+        .info {
+            
+        }
+    }
+}

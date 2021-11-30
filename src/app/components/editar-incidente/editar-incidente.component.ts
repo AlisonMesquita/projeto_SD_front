@@ -15,7 +15,9 @@ export class EditarIncidenteComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<EditarIncidenteComponent>,
     private fb: FormBuilder
-  ) {
+  ) 
+  { 
+    console.log(data);
       //     id: number;
       //     descricao: string;
       //     solucao?: string;
@@ -26,16 +28,16 @@ export class EditarIncidenteComponent implements OnInit {
       //     dataCriacao: string;
       //     status: string;
     this.form = this.fb.group({
-      id: new FormControl(data?.id || '', [Validators.required]),
-      descricao: new FormControl(data?.descricao || '', [Validators.required]),
-      solucao: new FormControl(data?.solucao || '', [Validators.required]),
+      id: new FormControl(data.incidente?.id || '', [Validators.required]),
+      descricao: new FormControl(data.incidente?.descricao || '', [Validators.required]),
+      solucao: new FormControl(data.incidente?.solucao || '', [Validators.required]),
       imagemPath: new FormControl('', [Validators.required]),
-      imagem: new FormControl(data?.imagem || '', [Validators.required]),
-      endereco: new FormControl(data?.endereco || '', [Validators.required]),
-      tipo: new FormControl(data?.tipo || '', [Validators.required]),
-      usuario: new FormControl(data?.usuario || '', [Validators.required]),
-      dataCriacao: new FormControl(data?.dataCriacao || '', [Validators.required]),
-      status: new FormControl(data?.status || '', [Validators.required]),
+      imagem: new FormControl(data.incidente?.imagem || '', [Validators.required]),
+      endereco: new FormControl(data.incidente?.endereco || '', [Validators.required]),
+      tipo: new FormControl(data.incidente?.tipo || '', [Validators.required]),
+      usuario: new FormControl(data.incidente?.usuario || '', [Validators.required]),
+      dataCriacao: new FormControl(data.incidente?.dataCriacao || '', [Validators.required]),
+      status: new FormControl(data.incidente?.status || '', [Validators.required]),
     });
   }
 

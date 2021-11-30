@@ -37,12 +37,16 @@ export class GuiaIncidentesComponent implements OnInit, AfterViewInit {
     this.incidentes.paginator = this.paginator;
   }
 
-  openDialog(): void {
+  openDialog(incidente?: any): void {
     const dialogRef = this.dialog.open(EditarIncidenteComponent, {
+      data: {
+        incidente: incidente
+      }
       //width: '250px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      console.log("Result: " + result);
       console.log('The dialog was closed');
     });
   }
