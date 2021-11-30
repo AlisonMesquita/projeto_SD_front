@@ -55,5 +55,38 @@ export const INCIDENTES: Incidente[] = [
         usuario: "John Doe",
         dataCriacao: "01-11-2021",
         status: "Cadastrado"
+    },
+    {
+        id: 6,
+        descricao: "Qualquer outro problema aqui",
+        solucao: "",
+        imagem: "",
+        endereco: "Rua Capitão Maciel",
+        tipo: "Desconhecido",
+        usuario: "John Doe",
+        dataCriacao: "01-11-2021",
+        status: "Cadastrado"
+    },
+    {
+        id: 7,
+        descricao: "Qualquer outro problema aqui",
+        solucao: "",
+        imagem: "",
+        endereco: "Rua Capitão Maciel",
+        tipo: "Desconhecido",
+        usuario: "John Doe",
+        dataCriacao: "01-11-2021",
+        status: "Cadastrado"
+    },
+    {
+        id: 8,
+        descricao: "Qualquer outro problema aqui",
+        solucao: "",
+        imagem: "",
+        endereco: "Rua Capitão Maciel",
+        tipo: "Desconhecido",
+        usuario: "John Doe",
+        dataCriacao: "01-11-2021",
+        status: "Cadastrado"
     }
 ]

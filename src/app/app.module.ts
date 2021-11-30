@@ -3,10 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
 
 // Páginas
 import { GuiaAnaliseModule } from './components/guia-analise/guia-analise.module';
 import { GuiaIncidentesModule } from './components/guia-incidentes/guia-incidentes.module';
+import { GuiaNoticiasModule } from './components/guia-noticias/guia-noticias.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -31,9 +38,17 @@ const appRoutes: Routes = [
     AppRoutingModule,
     GuiaAnaliseModule,
     GuiaIncidentesModule,
+    GuiaNoticiasModule,
     RouterModule.forRoot(appRoutes, {useHash: true}),
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    FlexLayoutModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

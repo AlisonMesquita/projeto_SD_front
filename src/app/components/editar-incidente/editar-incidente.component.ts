@@ -9,13 +9,35 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 })
 
 export class EditarIncidenteComponent implements OnInit {
-  //form?: FormGroup;
+  form!: FormGroup;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<EditarIncidenteComponent>,
-    //private fb: FormBuilder
-  ) { }
+    private fb: FormBuilder
+  ) {
+      //     id: number;
+      //     descricao: string;
+      //     solucao?: string;
+      //     imagem?: string;
+      //     endereco: string;
+      //     tipo: string;
+      //     usuario: string;
+      //     dataCriacao: string;
+      //     status: string;
+    this.form = this.fb.group({
+      id: new FormControl(data?.id || '', [Validators.required]),
+      descricao: new FormControl(data?.descricao || '', [Validators.required]),
+      solucao: new FormControl(data?.solucao || '', [Validators.required]),
+      imagemPath: new FormControl('', [Validators.required]),
+      imagem: new FormControl(data?.imagem || '', [Validators.required]),
+      endereco: new FormControl(data?.endereco || '', [Validators.required]),
+      tipo: new FormControl(data?.tipo || '', [Validators.required]),
+      usuario: new FormControl(data?.usuario || '', [Validators.required]),
+      dataCriacao: new FormControl(data?.dataCriacao || '', [Validators.required]),
+      status: new FormControl(data?.status || '', [Validators.required]),
+    });
+  }
 
   ngOnInit(): void {
   }
