@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
 
 // Páginas
 import { GuiaAnaliseModule } from './components/guia-analise/guia-analise.module';
@@ -48,7 +49,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     MatInputModule,
     FlexLayoutModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

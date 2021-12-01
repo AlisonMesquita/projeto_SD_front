@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Incidente } from 'src/app/interfaces/incidentes_model';
-import { INCIDENTES } from 'src/app/mock-incidentes'; // Array com fake data
+//import { INCIDENTES } from 'src/app/mock-incidentes'; // Array com fake data
 import { EditarIncidenteComponent } from '../editar-incidente/editar-incidente.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { IncidenteService } from 'src/app/services/incidente.service';
 
 @Component({
   selector: 'app-guia-incidentes',
@@ -15,13 +16,16 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 })
 
 export class GuiaIncidentesComponent implements OnInit, AfterViewInit {
-  //incidentes: Incidente[] = INCIDENTES;  // Armazena fake data na var que é do tipo Incidente[] 
-  incidentes = new MatTableDataSource<Incidente>(INCIDENTES);
+  //incidentes: Incidente[] = [];  // Armazena fake data na var que é do tipo Incidente[] 
+  //incidentes = new MatTableDataSource<Incidente>(INCIDENTES);
+  incidentes = new MatTableDataSource<Incidente>();
+  responseData: any;
   displayedColumns = ['options', 'descricao', 'endereco', 'tipo', 'usuario', 'dataCriacao', 'status'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   form!: FormGroup;
 
   constructor(
+    private incidenteService: IncidenteService,
     public dialog: MatDialog,  // Inicia uma instância do dialog
     private fb: FormBuilder
   ) { 
@@ -31,6 +35,12 @@ export class GuiaIncidentesComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.incidenteService.getAllIncidentes().then(data => {
+      //console.log(data);
+      this.responseData = data;
+      this.incidentes = this.responseData.response;
+      console.log(this.incidentes);
+    })
   }
 
   ngAfterViewInit() {
@@ -42,7 +52,6 @@ export class GuiaIncidentesComponent implements OnInit, AfterViewInit {
       data: {
         incidente: incidente
       }
-      //width: '250px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -51,7 +60,7 @@ export class GuiaIncidentesComponent implements OnInit, AfterViewInit {
     });
   }
 
-  deleteItem() {
+  deleteItem(incidente: any) {
     Swal.fire({
       icon: 'warning',
       title: 'Deseja mesmo remover esse item?',
@@ -61,8 +70,14 @@ export class GuiaIncidentesComponent implements OnInit, AfterViewInit {
       cancelButtonText: 'Cancelar',
       allowOutsideClick: () => !Swal.isLoading()
     }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire('Removido com sucesso', '', 'success');
+      if(result.isConfirmed) {
+        this.incidenteService.
+          deleteIncidenteById(incidente.id)
+            .then((response) => {
+              console.log(response);
+              Swal.fire('Removido com sucesso', '', 'success');
+              window.location.reload();
+            })
         console.log("Removido");
       }
     });

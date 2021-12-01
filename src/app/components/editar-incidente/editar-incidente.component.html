@@ -9,18 +9,20 @@
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Data de Criação</mat-label>
-                <input matInput type="text" formControlName="dataCriacao" required placeholder="dd/mm/yyyy" />
+                <input matInput type="text" formControlName="data_insercao" required placeholder="dd/mm/yyyy" />
             </mat-form-field>
         </div>
         
         <div class="row" fxLayout="row" fxLayoutAlign="space-between center">
             <div>
-                <div class="box"></div>
+                <div class="box">
+                    <img src alt="">
+                </div>
             </div>
             <div fxLayout="column" >
                 <mat-form-field>
                     <mat-label>Usuário</mat-label>
-                    <input matInput type="text" formControlName="usuario" required />
+                    <input matInput type="text" formControlName="usuario_app" required />
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Endereço</mat-label>
@@ -28,7 +30,7 @@
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Tipo</mat-label>
-                    <input matInput type="text" formControlName="tipo" required />
+                    <input matInput type="text" formControlName="tipo_comunique" required />
                 </mat-form-field>
             </div>
         </div>
@@ -57,6 +59,9 @@
                 <!-- <button mat-button (click)="closeDialog()">Fechar</button> -->
                 <button class="btn" mat-raised-button color="primary" (click)="closeDialog()">
                     <mat-icon>close</mat-icon>
+                </button>
+                <button class="btn" mat-raised-button color="secondary" (click)="editItem()">
+                    <mat-icon>done</mat-icon>
                 </button>
             </div>
         </div>

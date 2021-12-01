@@ -6,6 +6,6 @@ export interface Incidente {
     endereco: string;
     tipo: string;
     usuario: string;
-    dataCriacao: string;
+    dataCriacao: Date;
     status: string;
 }
