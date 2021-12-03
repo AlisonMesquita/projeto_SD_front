@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { NoticiaService } from 'src/app/services/noticia.service';
 
@@ -27,7 +27,6 @@ export class EditarNoticiasComponent implements OnInit {
       titulo: [data.noticia?.titulo || '', [Validators.required]],
       imagem: [data.noticia?.imagem || ''],
       categoria: [data.noticia?.categoria || '', [Validators.required]],
-      //categoria_id: ['', [Validators.required]],
       usuario: [data.noticia?.usuario || ''],
       dataCriacao: [data.noticia?.dataCriacao || '']
     })

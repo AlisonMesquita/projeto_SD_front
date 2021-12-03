@@ -15,7 +15,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { GuiaAnaliseModule } from './components/guia-analise/guia-analise.module';
 import { GuiaIncidentesModule } from './components/guia-incidentes/guia-incidentes.module';
 import { GuiaNoticiasModule } from './components/guia-noticias/guia-noticias.module';
-import { HomeModule } from './components/home/home.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -23,12 +22,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditarIncidenteComponent } from './components/editar-incidente/editar-incidente.component';
 import { EditarNoticiasComponent } from './components/editar-noticias/editar-noticias.component';
 import { CadastrarNoticiasComponent } from './components/cadastrar-noticias/cadastrar-noticias.component';
-import { HomeComponent } from './components/home/home.component';
 
 const appRoutes: Routes = [
   {
     path: "**",
-    redirectTo: "/home",
+    redirectTo: "/guia-incidentes",
   }
 ];
 
@@ -39,7 +37,6 @@ const appRoutes: Routes = [
     EditarIncidenteComponent,
     EditarNoticiasComponent,
     CadastrarNoticiasComponent,
-    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +46,6 @@ const appRoutes: Routes = [
     GuiaAnaliseModule,
     GuiaIncidentesModule,
     GuiaNoticiasModule,
-    HomeModule,
 
     RouterModule.forRoot(appRoutes, {useHash: true}),
     BrowserAnimationsModule,

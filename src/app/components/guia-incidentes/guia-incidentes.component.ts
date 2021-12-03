@@ -66,5 +66,4 @@ export class GuiaIncidentesComponent implements OnInit {
       }
     });
   }
-
 }

@@ -1,47 +1,51 @@
 section {
     margin: 0 auto;
     background-color: #E0E0E2;
-    height: 573px;
-
+    min-height: 573px;
+    
     .content {
         width: 1200px;
         margin: 0px auto;
-        text-align: center;        
         background-color: #fff;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
-        p {
-            font-size: 20px;
-            color: #087CA7;
-            padding-top: 20px;
+        th {
+            text-align: center;
+            background-color: #087CA7;
+            color: white;
+            font-size: 16px;
         }
 
-        .container {
-            margin-top: -20px;
-            padding: 0px 20px;
-            display: flex;
-            align-items: center;
-            height: 500px;
-        
-            .container-options {
-                width: 20%;
-                height: 400px;
-                margin-right: 20px;
-    
-                .box {
-                    width: 200px;
-                    height: 120px;
-                    background-color: #E0E0E2;
-                    margin-bottom: 20px;
-                }
-            }
-        
-            .container-panel {
-                width: 80%;
-                height: 400px;
-                background-color: #E0E0E2;
-            }
+        .form {
+            width: 200px;
+        }
+
+        .edit-icon {
+            cursor: pointer;
+            color: #087CA7;
+        }
+
+        .delete-icon {
+            cursor: pointer;
+            color: #087CA7;
+        }
+
+        .form {
+            padding: 10px 20px;
+        }
+
+        .title {
+            font-size: 20px;
+            color: #087CA7;
+            padding: 20px 0px 10px 0px;
+            text-align: center;
+        }
+
+        table {
+            margin: 0 auto;
+            width: 80%;
+            margin-bottom: 50px;
+            text-align: center;
         }
     }
 }
-

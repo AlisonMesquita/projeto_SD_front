@@ -1,6 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { NoticiaService } from 'src/app/services/noticia.service';
 
@@ -14,7 +14,6 @@ export class CadastrarNoticiasComponent implements OnInit {
 
   constructor(
     private noticiaService: NoticiaService,
-    //@Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<CadastrarNoticiasComponent>,
     private fb: FormBuilder
   ) { }

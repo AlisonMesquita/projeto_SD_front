@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Noticias } from 'src/app/interfaces/noticias_model';
-import { NOTICIAS } from 'src/app/mock-noticias';
+//import { NOTICIAS } from 'src/app/mock-noticias';
 import Swal from 'sweetalert2';
 import { EditarNoticiasComponent } from '../editar-noticias/editar-noticias.component';
 import { CadastrarNoticiasComponent } from '../cadastrar-noticias/cadastrar-noticias.component';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatDialog} from '@angular/material/dialog';
+import { FormGroup, FormBuilder} from '@angular/forms';
 import { NoticiaService } from 'src/app/services/noticia.service';
 
 @Component({
@@ -27,7 +27,6 @@ export class GuiaNoticiasComponent implements OnInit {
 
   ngOnInit(): void {
     this.noticiaService.getAllNews().then(data => {
-      //console.log(data);
       this.responseData = data;
       this.noticias = this.responseData.response;
       console.log(this.noticias);

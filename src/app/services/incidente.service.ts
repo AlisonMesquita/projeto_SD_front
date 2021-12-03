@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-//import { HttpClient } from '@angular/common/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -16,10 +15,6 @@ export class IncidenteService {
     console.log(url)
 
     return this.client.put(url, data).toPromise();
-    // return this.client.put(url, data, {
-    //   headers:new HttpHeaders()
-    //   .set('Content-Type','application/json')
-    //   }).toPromise();
   }
   
   getAllIncidentes() {
