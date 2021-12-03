@@ -23,18 +23,19 @@ export class EditarIncidenteComponent implements OnInit {
     console.log(data);
 
     this.form = this.fb.group({
-      id: new FormControl(data.incidente?.id || '', [Validators.required]),
-      descricao: new FormControl(data.incidente?.descricao || '', [Validators.required]),
-      solucao: new FormControl(data.incidente?.solucao || '', [Validators.required]),
-      imagem: new FormControl(data.incidente?.imagem || '', [Validators.required]),
-      endereco: new FormControl(data.incidente?.endereco || '', [Validators.required]),
-      tipo_comunique: new FormControl(data.incidente?.tipo_comunique || '', [Validators.required]),
-      usuario_app: new FormControl(data.incidente?.usuario_app || '', [Validators.required]),
-      data_insercao: new FormControl(data.incidente?.data_insercao || '', [Validators.required]),
+      id: new FormControl(data.incidente?.id || ''),
+      descricao: new FormControl(data.incidente?.descricao || ''),
+      solucao: new FormControl(data.incidente?.solucao || ''),
+      imagem: new FormControl(data.incidente?.imagem || ''),
+      endereco: new FormControl(data.incidente?.endereco || ''),
+      tipo_comunique: new FormControl(data.incidente?.tipo_comunique || ''),
+      usuario_app: new FormControl(data.incidente?.usuario_app || ''),
+      data_insercao: new FormControl(data.incidente?.data_insercao || ''),
       status: new FormControl(data.incidente?.status || '', [Validators.required]),
-      endereco_id: new FormControl(data.incidente?.endereco_id || '', [Validators.required]),
-      tipo_comunique_id: new FormControl(data.incidente?.tipo_comunique_id || '', [Validators.required]),
-      usuario_app_id: new FormControl(data.incidente?.usuario_app_id || '', [Validators.required]),
+      parecer: new FormControl(data.incidente?.parecer || '', [Validators.required]),
+      endereco_id: new FormControl(data.incidente?.endereco_id || ''),
+      tipo_comunique_id: new FormControl(data.incidente?.tipo_comunique_id || ''),
+      usuario_app_id: new FormControl(data.incidente?.usuario_app_id || ''),
     });
   }
 
@@ -42,10 +43,9 @@ export class EditarIncidenteComponent implements OnInit {
   }
 
   editItem(): void {
-    let obj = this.form.getRawValue()
-    let jsonData = JSON.stringify(obj);
-    console.log(jsonData)
-    this.incidenteService.updateIncidenteId(jsonData, this.data.incidente.id)
+    let data = '';
+
+    this.incidenteService.updateIncidenteId(this.form.value.parecer, this.form.value.status, this.data.incidente.id, data)
       .then((response) => {
         console.log(response);
         Swal.fire('Incidente atualizado com sucesso', '', 'success').then(

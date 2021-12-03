@@ -1,27 +1,44 @@
 section {
     margin: 0 auto;
-    height: 573px;
+    min-height: 573px;
     background-color: #E0E0E2;
-
+    
     .content {
         margin: 0 auto;
         width: 1200px;
         background-color: white;
-        padding: 20px;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+        .container {
+            width: 1000px;
+            margin: 0 auto;
+            padding-bottom: 20px;
+
+            .title {
+                font-size: 20px;
+                color: #087CA7;
+                padding-top: 20px;
+                text-align: center;
+            }
+        }
 
         .options {
-            padding-bottom: 15px;
+            padding: 20px;
         }
 
         .box {
             width: 120px;
             height: 120px;
             background-color: slategrey;
-            margin-bottom: 20px;
+            margin-top: 10px;
         }
+
         .item {
             margin: 20px 0px;
+            padding-top: 10px;
             border-radius: 4px;
+            background-color: #f7f7f8;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
         }
 
         .text {
@@ -30,9 +47,14 @@ section {
             text-align: center;
             padding: 0px 10px;
         }
+        
+        .description {
+            text-align: justify;
+        }
 
-        .info {
-            
+        .cb {
+            margin-right: 20px;
+            color: #087CA7;
         }
     }
 }

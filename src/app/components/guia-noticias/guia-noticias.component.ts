@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Noticias } from 'src/app/interfaces/noticias_model';
 import { NOTICIAS } from 'src/app/mock-noticias';
+import Swal from 'sweetalert2';
+import { EditarNoticiasComponent } from '../editar-noticias/editar-noticias.component';
+import { CadastrarNoticiasComponent } from '../cadastrar-noticias/cadastrar-noticias.component';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { NoticiaService } from 'src/app/services/noticia.service';
 
 @Component({
   selector: 'app-guia-noticias',
@@ -9,12 +15,68 @@ import { NOTICIAS } from 'src/app/mock-noticias';
 })
 
 export class GuiaNoticiasComponent implements OnInit {
-  noticias: Noticias[] = NOTICIAS;
-  displayedColumns = ['options', 'descricao', 'titulo', 'dataCriacao', 'usuario', 'categoria'];
+  noticias?: Noticias[];
+  responseData: any;
+  form!: FormGroup;
 
-  constructor() { }
+  constructor(
+    private noticiaService: NoticiaService,
+    public dialog: MatDialog,
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
+    this.noticiaService.getAllNews().then(data => {
+      //console.log(data);
+      this.responseData = data;
+      this.noticias = this.responseData.response;
+      console.log(this.noticias);
+    })
+  }
+
+  openDialog(noticia?: any): void {
+    const dialogRef = this.dialog.open(EditarNoticiasComponent, {
+      data: {
+        noticia: noticia
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("Result: " + result);
+      console.log('The dialog was closed');
+    });
+  }
+
+  openCreateDialog() {
+    const dialogRef = this.dialog.open(CadastrarNoticiasComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("Result: " + result);
+      console.log('The dialog was closed');
+    });
+  }
+
+  deleteItem(item: any) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Deseja mesmo remover esse item?',
+      confirmButtonText: 'Remover',
+      showCancelButton: true,
+      confirmButtonColor: '#dc3545',
+      cancelButtonText: 'Cancelar',
+      allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+      if(result.isConfirmed) {
+        this.noticiaService.
+          deleteNews(item.id)
+            .then((response) => {
+              Swal.fire('Removido com sucesso', '', 'success');
+              window.location.reload();
+            })
+        console.log("Removido");
+      }
+    });
   }
 
 }

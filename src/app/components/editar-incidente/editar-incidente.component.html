@@ -5,11 +5,11 @@
         <div class="row" fxLayout="row"  fxLayoutAlign="space-between center">
             <mat-form-field>
                 <mat-label>Descrição</mat-label>
-                <input matInput type="text" formControlName="descricao" required />
+                <input matInput type="text" formControlName="descricao" readonly/>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Data de Criação</mat-label>
-                <input matInput type="text" formControlName="data_insercao" required placeholder="dd/mm/yyyy" />
+                <input matInput type="text" formControlName="data_insercao" placeholder="dd/mm/yyyy" readonly/>
             </mat-form-field>
         </div>
         
@@ -22,15 +22,15 @@
             <div fxLayout="column" >
                 <mat-form-field>
                     <mat-label>Usuário</mat-label>
-                    <input matInput type="text" formControlName="usuario_app" required />
+                    <input matInput type="text" formControlName="usuario_app" readonly/>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Endereço</mat-label>
-                    <input matInput type="text" formControlName="endereco" required />
+                    <input matInput type="text" formControlName="endereco" readonly/>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Tipo</mat-label>
-                    <input matInput type="text" formControlName="tipo_comunique" required />
+                    <input matInput type="text" formControlName="tipo_comunique" readonly/>
                 </mat-form-field>
             </div>
         </div>
@@ -38,29 +38,29 @@
         <div class="row" fxLayout="row" fxLayoutAlign="space-between center">
             <mat-form-field>
                 <mat-label>Solução</mat-label>
-                <input matInput type="text" formControlName="solucao" required />
+                <input matInput type="text" formControlName="solucao" readonly/>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Status</mat-label>
                 <mat-select formControlName="status" required>
-                    <mat-option value="cadastrado">Cadastrado</mat-option>
-                    <mat-option value="emAtendimento">Em Atendimento</mat-option>
-                    <mat-option value="concluido">Concluído</mat-option>
-                    <mat-option value="cancelado">Cancelado</mat-option>
+                    <mat-option value="Cadastrado">Cadastrado</mat-option>
+                    <mat-option value="Atendido">Em Atendimento</mat-option>
+                    <mat-option value="Concluido">Concluído</mat-option>
+                    <mat-option value="Cancelado">Cancelado</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="row" fxLayout="row" fxLayoutAlign="space-between center">
             <mat-form-field>
-                <mat-label>ID</mat-label>
-                <input matInput type="text" formControlName="id" required />
+                <mat-label>Parecer</mat-label>
+                <textarea matInput type="text" formControlName="parecer"></textarea>
             </mat-form-field>
             <div mat-dialog-actions>
                 <!-- <button mat-button (click)="closeDialog()">Fechar</button> -->
-                <button class="btn" mat-raised-button color="primary" (click)="closeDialog()">
+                <button class="btn-close" mat-raised-button color="primary" (click)="closeDialog()">
                     <mat-icon>close</mat-icon>
                 </button>
-                <button class="btn" mat-raised-button color="secondary" (click)="editItem()">
+                <button class="btn-edit" mat-raised-button color="primary" (click)="editItem()">
                     <mat-icon>done</mat-icon>
                 </button>
             </div>

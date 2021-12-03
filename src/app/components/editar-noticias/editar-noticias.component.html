@@ -1,0 +1,55 @@
+<div fxLayoutAlign="center center" fxLayout="column">
+    <h1 mat-dialog-title>Editar Notícia</h1>
+
+    <form class="form" [formGroup]="form">
+        <div class="row" fxLayout="row"  fxLayoutAlign="space-between center">
+            <mat-form-field>
+                <mat-label>Título</mat-label>
+                <input matInput type="text" formControlName="titulo" required />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Categorias</mat-label>
+                <mat-select formControlName="categoria">
+                  <mat-option value="4">Saúde Pública</mat-option>
+                  <mat-option value="5">Bem Estar Social</mat-option>
+                  <mat-option value="6">Economia</mat-option>
+                  <mat-option value="7">Segurança Pública</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        
+        <div class="row" fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+                <div class="box">
+                    <img src alt="">
+                </div>
+            </div>
+            <div fxLayout="column">
+                <mat-form-field>
+                    <mat-label>Descrição</mat-label>
+                    <textarea matInput type="text" formControlName="descricao" spellcheck="false" rows="10" cols="50"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row" fxLayout="row" fxLayoutAlign="space-between center">
+                <mat-form-field>
+                    <mat-label>Usuário</mat-label>
+                    <input matInput type="text" formControlName="usuario" readonly />
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Data</mat-label>
+                    <input matInput type="text" formControlName="dataCriacao" readonly />
+                </mat-form-field>
+        </div>
+        <div class="row" fxLayout="row" fxLayoutAlign="end end">
+            <div mat-dialog-actions>
+                <button class="btn-close" mat-raised-button color="primary" (click)="closeDialog()">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <button class="btn-edit" mat-raised-button color="primary" (click)="editItem()">
+                    <mat-icon>done</mat-icon>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

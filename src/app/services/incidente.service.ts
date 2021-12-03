@@ -5,15 +5,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
 export class IncidenteService {
   url = "http://localhost:3000"
 
-  constructor(private client: HttpClient) {
+  constructor(private client: HttpClient) { }
 
-  }
-
-  updateIncidenteId(data: any, id: number) {
-    const url = this.url + '/comunique/' + id;
+  updateIncidenteId(parecer: string, status: string, id: number, data: any) {
+    const url = this.url + '/comunique/' + id + '/' + parecer + '/' + status;
     console.log(url)
 
     return this.client.put(url, data).toPromise();
@@ -22,7 +21,7 @@ export class IncidenteService {
     //   .set('Content-Type','application/json')
     //   }).toPromise();
   }
-
+  
   getAllIncidentes() {
     const url = this.url + '/comunique'
     return this.client.get(url).toPromise(); 

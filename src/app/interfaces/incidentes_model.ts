@@ -8,4 +8,5 @@ export interface Incidente {
     usuario: string;
     dataCriacao: Date;
     status: string;
+    parecer: string;
 }

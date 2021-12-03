@@ -1,12 +1,10 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Incidente } from 'src/app/interfaces/incidentes_model';
-//import { INCIDENTES } from 'src/app/mock-incidentes'; // Array com fake data
+//import { INCIDENTES } from 'src/app/mock-incidentes';
 import { EditarIncidenteComponent } from '../editar-incidente/editar-incidente.component';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { IncidenteService } from 'src/app/services/incidente.service';
 
 @Component({
@@ -15,36 +13,23 @@ import { IncidenteService } from 'src/app/services/incidente.service';
   styleUrls: ['./guia-incidentes.component.scss']
 })
 
-export class GuiaIncidentesComponent implements OnInit, AfterViewInit {
-  //incidentes: Incidente[] = [];  // Armazena fake data na var que é do tipo Incidente[] 
-  //incidentes = new MatTableDataSource<Incidente>(INCIDENTES);
+export class GuiaIncidentesComponent implements OnInit {
   incidentes = new MatTableDataSource<Incidente>();
   responseData: any;
   displayedColumns = ['options', 'descricao', 'endereco', 'tipo', 'usuario', 'dataCriacao', 'status'];
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  form!: FormGroup;
 
   constructor(
     private incidenteService: IncidenteService,
-    public dialog: MatDialog,  // Inicia uma instância do dialog
-    private fb: FormBuilder
+    public dialog: MatDialog
   ) { 
-    this.form = this.fb.group({
-      filtro: ['', [Validators.required]]
-    });
   }
 
   ngOnInit(): void {
     this.incidenteService.getAllIncidentes().then(data => {
-      //console.log(data);
       this.responseData = data;
       this.incidentes = this.responseData.response;
       console.log(this.incidentes);
     })
-  }
-
-  ngAfterViewInit() {
-    this.incidentes.paginator = this.paginator;
   }
 
   openDialog(incidente?: any): void {
@@ -74,7 +59,6 @@ export class GuiaIncidentesComponent implements OnInit, AfterViewInit {
         this.incidenteService.
           deleteIncidenteById(incidente.id)
             .then((response) => {
-              console.log(response);
               Swal.fire('Removido com sucesso', '', 'success');
               window.location.reload();
             })
