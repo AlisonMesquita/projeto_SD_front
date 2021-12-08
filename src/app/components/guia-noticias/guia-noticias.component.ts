@@ -29,7 +29,6 @@ export class GuiaNoticiasComponent implements OnInit {
     this.noticiaService.getAllNews().then(data => {
       this.responseData = data;
       this.noticias = this.responseData.response;
-      console.log(this.noticias);
     })
   }
 

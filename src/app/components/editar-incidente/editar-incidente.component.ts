@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 
 export class EditarIncidenteComponent implements OnInit {
   form!: FormGroup;
+  imagem: any;
 
   constructor(
     private incidenteService: IncidenteService,
@@ -21,12 +22,13 @@ export class EditarIncidenteComponent implements OnInit {
   ) 
   { 
     console.log(data);
+    
 
     this.form = this.fb.group({
       id: new FormControl(data.incidente?.id || ''),
       descricao: new FormControl(data.incidente?.descricao || ''),
       solucao: new FormControl(data.incidente?.solucao || ''),
-      imagem: new FormControl(data.incidente?.imagem || ''),
+      imagem: new FormControl("http://localhost:3000/uploads/" + data.incidente?.imagem || ''),
       endereco: new FormControl(data.incidente?.endereco || ''),
       tipo_comunique: new FormControl(data.incidente?.tipo_comunique || ''),
       usuario_app: new FormControl(data.incidente?.usuario_app || ''),
@@ -37,6 +39,11 @@ export class EditarIncidenteComponent implements OnInit {
       tipo_comunique_id: new FormControl(data.incidente?.tipo_comunique_id || ''),
       usuario_app_id: new FormControl(data.incidente?.usuario_app_id || ''),
     });
+
+    if(data) {
+      this.imagem = "http://localhost:3000/uploads/" + data.incidente.imagem;
+      console.log(data.incidente.imagem);
+    }
   }
 
   ngOnInit(): void {
