@@ -10,13 +10,19 @@
     background-color: red;
 }
 
-.btn-edit {
+.btn-create {
     background-color: #087CA7;
     margin-left: 5px;
 }
 
-.box, .img {
+
+.box {
     width: 175px;
     height: 175px;
-    // background-color: #087CA7;
+    background-color: #087CA7;
+}
+
+.img {
+    width: 175px;
+    height: 175px;
 }
