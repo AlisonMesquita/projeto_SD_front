@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { IncidenteService } from 'src/app/services/incidente.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-incidente',
@@ -10,36 +12,53 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 
 export class EditarIncidenteComponent implements OnInit {
   form!: FormGroup;
+  imagem: any;
 
   constructor(
+    private incidenteService: IncidenteService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<EditarIncidenteComponent>,
     private fb: FormBuilder
-  ) {
-      //     id: number;
-      //     descricao: string;
-      //     solucao?: string;
-      //     imagem?: string;
-      //     endereco: string;
-      //     tipo: string;
-      //     usuario: string;
-      //     dataCriacao: string;
-      //     status: string;
+  ) 
+  { 
+    console.log(data);
+    
+
     this.form = this.fb.group({
-      id: new FormControl(data?.id || '', [Validators.required]),
-      descricao: new FormControl(data?.descricao || '', [Validators.required]),
-      solucao: new FormControl(data?.solucao || '', [Validators.required]),
-      imagemPath: new FormControl('', [Validators.required]),
-      imagem: new FormControl(data?.imagem || '', [Validators.required]),
-      endereco: new FormControl(data?.endereco || '', [Validators.required]),
-      tipo: new FormControl(data?.tipo || '', [Validators.required]),
-      usuario: new FormControl(data?.usuario || '', [Validators.required]),
-      dataCriacao: new FormControl(data?.dataCriacao || '', [Validators.required]),
-      status: new FormControl(data?.status || '', [Validators.required]),
+      id: new FormControl(data.incidente?.id || ''),
+      descricao: new FormControl(data.incidente?.descricao || ''),
+      solucao: new FormControl(data.incidente?.solucao || ''),
+      imagem: new FormControl("http://localhost:3000/uploads/" + data.incidente?.imagem || ''),
+      endereco: new FormControl(data.incidente?.endereco || ''),
+      tipo_comunique: new FormControl(data.incidente?.tipo_comunique || ''),
+      usuario_app: new FormControl(data.incidente?.usuario_app || ''),
+      data_insercao: new FormControl(data.incidente?.data_insercao || ''),
+      status: new FormControl(data.incidente?.status || '', [Validators.required]),
+      parecer: new FormControl(data.incidente?.parecer || '', [Validators.required]),
+      endereco_id: new FormControl(data.incidente?.endereco_id || ''),
+      tipo_comunique_id: new FormControl(data.incidente?.tipo_comunique_id || ''),
+      usuario_app_id: new FormControl(data.incidente?.usuario_app_id || ''),
     });
+
+    if(data) {
+      this.imagem = "http://localhost:3000/uploads/" + data.incidente.imagem;
+      console.log(data.incidente.imagem);
+    }
   }
 
   ngOnInit(): void {
+  }
+
+  editItem(): void {
+    let data = '';
+
+    this.incidenteService.updateIncidenteId(this.form.value.parecer, this.form.value.status, this.data.incidente.id, data)
+      .then((response) => {
+        console.log(response);
+        Swal.fire('Incidente atualizado com sucesso', '', 'success').then(
+          () => window.location.reload()
+        );
+      })
   }
 
   closeDialog(): void {

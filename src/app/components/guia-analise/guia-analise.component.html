@@ -1,22 +1,28 @@
 <section>
-    <div class="content">
-        <p>Painel de Informações</p>
-        <div class="container">
-            <div class="container-options">
-                <div class="box box-1">
-        
-                </div>
-                <div class="box box-2">
-                    
-                </div>
-                <div class="box box-3">
-                    
-                </div>
-            </div>
-            <div class="container-panel">
-        
-            </div>
-        </div>
+    <div class="content" fxLayout="column" fxLayoutAlign="center center">
+        <p class="title">Painel de Informações</p>
+        <table mat-table [dataSource]="data" class="mat-elevation-z8">  
+            <ng-container matColumnDef="quantidade">
+                <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+                <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+              </ng-container>    
+            <ng-container matColumnDef="bairro">
+              <th mat-header-cell *matHeaderCellDef> Bairro </th>
+              <td mat-cell *matCellDef="let element"> {{element.bairro}} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="categoria">
+              <th mat-header-cell *matHeaderCellDef> Órgão Responsável </th>
+              <td mat-cell *matCellDef="let element"> {{element.categoria}} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="tipo">
+              <th mat-header-cell *matHeaderCellDef> Tipo </th>
+              <td mat-cell *matCellDef="let element"> {{element.tipo_comunique}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
     </div>
-    
 </section>

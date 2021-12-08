@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
 
 // Páginas
 import { GuiaAnaliseModule } from './components/guia-analise/guia-analise.module';
@@ -19,11 +20,13 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditarIncidenteComponent } from './components/editar-incidente/editar-incidente.component';
+import { EditarNoticiasComponent } from './components/editar-noticias/editar-noticias.component';
+import { CadastrarNoticiasComponent } from './components/cadastrar-noticias/cadastrar-noticias.component';
 
 const appRoutes: Routes = [
   {
     path: "**",
-    redirectTo: "/",
+    redirectTo: "/guia-incidentes",
   }
 ];
 
@@ -32,13 +35,18 @@ const appRoutes: Routes = [
     AppComponent,
     HeaderComponent,
     EditarIncidenteComponent,
+    EditarNoticiasComponent,
+    CadastrarNoticiasComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    
+    //Páginas
     GuiaAnaliseModule,
     GuiaIncidentesModule,
     GuiaNoticiasModule,
+
     RouterModule.forRoot(appRoutes, {useHash: true}),
     BrowserAnimationsModule,
     MatIconModule,
@@ -48,7 +56,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     MatInputModule,
     FlexLayoutModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

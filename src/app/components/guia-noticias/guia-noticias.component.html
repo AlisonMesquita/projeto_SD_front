@@ -1,1 +1,41 @@
-<p>guia-noticias works!</p>
+<section> 
+    <div class="content">        
+        <div class="container">
+            <div fxLayout="column" fxLayoutAlign="center center">
+                <p class="title">Guia de Notícias</p>
+                <button mat-raised-button color="primary" (click)="openCreateDialog()">Nova Notícia</button>
+            </div>
+
+            <div class="item " *ngFor="let noticia of noticias" fxLayout="row">
+                <div class="options" fxLayout="column" fxLayoutAlign="center center">
+                    <div class="btn-option" fxLayout="row" fxLayoutAlign="center center">
+                        <button mat-stroked-button color="warn" (click)="deleteItem(noticia)">Deletar</button>
+                        <button mat-stroked-button color="primary" (click)="openDialog(noticia)">Editar</button>
+                    </div>
+                    <div class="box">
+                        <img src="../../../assets/img/news.jpg" class="img">
+                    </div>
+                </div>
+                
+                <div class="text" fxLayout="column">
+                    <div>
+                        <p class="title">{{noticia.titulo}}</p>
+                    </div>
+                    <div class="sub-text" fxLayout="column" fxLayoutAlign="center start">
+                        <div fxLayout="row">
+                        <b><p class="info">{{noticia.categoria}}</p></b>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center center">
+                            <p class="info description">{{noticia.descricao}}</p>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center center">
+                            <p class="info cb">{{noticia.usuario}}</p>
+                            <p class="info cb"> || </p>
+                            <p class="info cb">{{noticia.dataCriacao}}</p>
+                        </div>
+                    </div>   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
