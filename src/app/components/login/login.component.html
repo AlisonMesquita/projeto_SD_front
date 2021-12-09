@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="vertical-center">
+        <div>
+            <mat-card>
+                <mat-card-title>CT-OS</mat-card-title>
+                <form class="form" [formGroup]="form">
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input matInput type="text" formControlName="login" />
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Senha</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'" formControlName="senha">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    <div class="row">
+                        <div class="col s12" style="text-align: right;">
+                            <button mat-flat-button color="primary" class="right" type="submit" (click)="sendlogin()" [disabled]="!form.valid">
+                                Entrar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+  </div>
+<!-- <div fxLayoutAlign="center center" fxLayout="column" class="main">
+
+    
+
+</div> -->

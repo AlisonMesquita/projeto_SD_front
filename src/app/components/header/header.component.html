@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container" *ngIf="this.router.url !== '/login'">
     <header>
         <div class="img-header">
             <a href="#home"><img src="../../../assets/img/logo.png"></a>
         </div>
-        
+
         <ul>
             <li><a href="#guia-incidentes">Incidentes</a></li>
             <li><a href="#guia-analise">Análises</a></li>
@@ -11,7 +11,28 @@
         </ul>
 
         <div class="user">
-            <mat-icon class="person-icon" style="font-size: 50px" aria-hidden="false" aria-label="edit icon">person</mat-icon>
+            <!-- <button mat-flat-button class="right" type="submit">
+                <mat-icon class="person-icon" style="font-size: 50px" aria-hidden="false" aria-label="edit icon">person
+                </mat-icon>
+            </button> -->
+            <!-- <button  mat-fab color="black" aria-label="edit icon" [matMenuTriggerFor]="menu">
+                <mat-icon>person</mat-icon>
+              </button> -->
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="background-color: whitesmoke;">
+                <mat-icon>person</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item type="submit" disabled>
+                  <mat-icon>edit</mat-icon>
+                  <span>Editar Informações</span>
+                </button>
+                <button mat-menu-item type="submit" (click)="logout()">
+                  <mat-icon>exit_to_app</mat-icon>
+                  <span>Sair</span>
+                </button>
+              </mat-menu>
+              
+
         </div>
     </header>
 </div>
